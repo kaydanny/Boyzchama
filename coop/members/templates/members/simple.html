@@ -1,0 +1,25 @@
+{% extends 'members/base.html'%}
+{% load static%}
+
+{% block content%}
+<form method="POST">
+    {% csrf_token %}
+    <div class="container">
+        <label>Initial Investment</label><br>
+        <input type="text" name="initial_inv"><br>
+
+        <label>rate</label><br>
+        <input type="text" name="rate"><br>
+
+        <label>Number of years</label><br>
+        <input type="text" name="num"><br>
+
+    </div>
+    <button type="submit" class="btn btn-primary">Calculate</button>
+</form>
+
+{% if result %}
+    <h2>Result: {{ imple_interest }}</h2>
+{% endif %}
+
+{% endblock%}

@@ -1,0 +1,35 @@
+{% extends 'members/base.html' %}
+{% load static%}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+<h1>Compound Interest Calculator</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="container">
+        <label for="principal">Principal amount:</label>
+        <input type="number" class="form-control" id="principal" name="principal" required>
+    </div>
+    <div class="container">
+        <label for="rate">Annual interest rate:</label>
+        <input type="number" step="any" class="form-control" id="rate" name="rate" required>
+    </div>
+    <div class="container">
+        <label for="years">Number of years:</label>
+        <input type="number" class="form-control" id="years" name="years" required>
+    </div>
+    <div class="container">
+        <label for="monthly_contrib">Monthly contribution:</label>
+        <input type="number" step="any" class="form-control" id="monthly_contrib" name="monthly_contrib" required>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Calculate</button>
+    
+</form>
+
+{% if result %}
+    <h2>Result: {{ result }}</h2>
+{% endif %}
+{% endblock %}
